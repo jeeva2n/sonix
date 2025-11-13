@@ -1,6 +1,8 @@
-import './PageStyles.css';
-
+import React, { useState } from 'react';
+import './css/Blog.css';
 function Blog() {
+  const [activeFilter, setActiveFilter] = useState('all');
+  
   return (
     <div className="blog-page">
       <div className="blog-header">
@@ -18,11 +20,36 @@ function Blog() {
           </div>
           
           <div className="category-filters">
-            <span className="filter active">All</span>
-            <span className="filter">Company News</span>
-            <span className="filter">Technical Articles</span>
-            <span className="filter">Industry Trends</span>
-            <span className="filter">Events</span>
+            <span 
+              className={`filter ${activeFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('all')}
+            >
+              All
+            </span>
+            <span 
+              className={`filter ${activeFilter === 'company-news' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('company-news')}
+            >
+              Company News
+            </span>
+            <span 
+              className={`filter ${activeFilter === 'technical' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('technical')}
+            >
+              Technical Articles
+            </span>
+            <span 
+              className={`filter ${activeFilter === 'industry' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('industry')}
+            >
+              Industry Trends
+            </span>
+            <span 
+              className={`filter ${activeFilter === 'events' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('events')}
+            >
+              Events
+            </span>
           </div>
         </div>
         
@@ -30,8 +57,8 @@ function Blog() {
           <div className="featured-image"></div>
           <div className="featured-content">
             <span className="category">Industry Trends</span>
-            <h2>The Future of Automated Manufacturing in Home</h2>
-            <p>Exploring how automation is transforming home care industry with increased efficiency and unprecedented precision.</p>
+            <h2>The Future of Automated Manufacturing in Personal Care</h2>
+            <p>Exploring how automation is transforming the personal care industry with increased efficiency and unprecedented precision.</p>
             <div className="article-meta">
               <span className="date">June 15, 2023</span>
               <span className="author">By Dr. Michael Zahoransky</span>
@@ -42,7 +69,7 @@ function Blog() {
         
         <div className="article-grid">
           <div className="article-card">
-            <div className="article-image"></div>
+            <div className="article-image company-news-img"></div>
             <div className="article-content">
               <span className="category">Company News</span>
               <h3>ZAHORANSKY Opens New Innovation Center in Germany</h3>
@@ -54,7 +81,7 @@ function Blog() {
           </div>
           
           <div className="article-card">
-            <div className="article-image"></div>
+            <div className="article-image technical-img"></div>
             <div className="article-content">
               <span className="category">Technical Articles</span>
               <h3>Advances in Mold Technology for Healthcare Applications</h3>
@@ -66,7 +93,7 @@ function Blog() {
           </div>
           
           <div className="article-card">
-            <div className="article-image"></div>
+            <div className="article-image events-img"></div>
             <div className="article-content">
               <span className="category">Events</span>
               <h3>ZAHORANSKY at Interbrush 2023: Highlights and Innovations</h3>
@@ -78,7 +105,7 @@ function Blog() {
           </div>
           
           <div className="article-card">
-            <div className="article-image"></div>
+            <div className="article-image industry-img"></div>
             <div className="article-content">
               <span className="category">Industry Trends</span>
               <h3>Sustainability in Brush Manufacturing: New Approaches</h3>

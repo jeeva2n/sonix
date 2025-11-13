@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Home.css';
+import './css/Home.css';
 
 const Home = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -31,7 +31,7 @@ const Home = () => {
     color: "#8FFF00",
     image: "/src/assets/primary/ep1.jpg",
     description:
-      "From ultrasonic testing to advanced radiography, we ensure your products meet the highest quality standards.",
+      "Reference standards and flawed specimens. From ultrasonic testing to advanced radiography, we ensure your products meet the highest quality standards.",
     buttons: ["Home", "Aerospace", "Oil & Gas"],
   },
   {
@@ -41,6 +41,8 @@ const Home = () => {
     subtitle2: "reliable results",
     color: "#FF0066",
     image: "/src/assets/primary/ep2.webp",
+    description:
+      "Standard and customised NDT reference block for every inspection model.",
   },
   {
     id: 3,
@@ -49,6 +51,8 @@ const Home = () => {
     subtitle2: "materials",
     color: "#FF00FF",
     image: "/src/assets/primary/q1.jpeg",
+    description:
+      "Precious Assure - each reference block is certified through advanced inspection and traceability.",
   },
   {
     id: 4,
@@ -57,8 +61,11 @@ const Home = () => {
     subtitle2: "NDT Experts",
     color: "#00FFFF",
     image: "/src/assets/primary/q4.jpg",
+    description:
+      "Proven excellence through client experience.",
   },
-  ];
+];
+
 
   return (
     <div className="home-container">

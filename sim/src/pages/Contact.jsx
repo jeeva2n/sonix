@@ -1,6 +1,6 @@
 // src/components/Contact.jsx
 import { useState } from 'react';
-import './Contact.css';
+import './css/Contact.css';
 
 function Contact({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -39,3 +39,5 @@ function Contact({ isOpen, onClose }) {
 }
 
 export default Contact;
+
+

@@ -1,9 +1,10 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './PageStyles.css';
+import './css/BroomBrush.css';
 
 function BroomBrush() {
   return (
-    <div className="page-layout">
+    <div className="broom-brush-page">
       <div className="image-gallery">
         <div className="gallery-item main-item">
           <div className="overlay">
@@ -28,7 +29,7 @@ function BroomBrush() {
           </div>
         </div>
 
-        <div className="gallery-item side-item">
+        <div className="gallery-item side-item first-side">
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
@@ -40,7 +41,7 @@ function BroomBrush() {
           </div>
         </div>
 
-        <div className="gallery-item side-item">
+        <div className="gallery-item side-item second-side">
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
@@ -52,7 +53,7 @@ function BroomBrush() {
           </div>
         </div>
 
-        <div className="gallery-item side-item">
+        <div className="gallery-item side-item third-side">
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">

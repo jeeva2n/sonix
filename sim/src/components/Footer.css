@@ -1,11 +1,14 @@
+/* footer.css */
+
 .footer {
-  background-color: #f3f5f8;
+  background-color: #edeff3;
   border-radius: 10px;
   margin: 20px auto;
   padding: 12px 25px;
   max-width: 1400px;
   width: 90%;
   font-family: "Poppins", sans-serif;
+  flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
 .footer-container {
@@ -29,7 +32,7 @@
   text-decoration: none;
   color: #1b1b1b;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   position: relative;
   transition: color 0.3s ease;
 }
@@ -68,21 +71,35 @@
 .social-icon.facebook:hover { background-color: #1877f2; }
 .social-icon.youtube:hover { background-color: #ff0000; }
 
-/* Responsive */
+/* =================================== */
+/* ========== RESPONSIVE CSS ========= */
+/* =================================== */
+
 @media (max-width: 900px) {
   .footer {
     border-radius: 0;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
   }
 
   .footer-container {
     flex-direction: column;
     gap: 15px;
+    padding: 10px 0;
     text-align: center;
   }
 
   .footer-nav ul {
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav ul {
+    gap: 15px; /* Reduce gap between links */
+  }
+
+  .footer-nav a {
+    font-size: 13px; /* Slightly smaller font */
   }
 }

@@ -1,4 +1,5 @@
-import './PageStyles.css';
+import React from 'react';
+import './css/Legal.css';
 
 function GTC() {
   return (
@@ -38,43 +39,6 @@ function GTC() {
           <h2>5. Prices and Payment Terms</h2>
           <p>5.1 The price stated in the order is binding. All prices are inclusive of statutory value-added tax, unless this is shown separately.</p>
           <p>5.2 Unless otherwise agreed in individual cases, the price includes all services and ancillary services of the Seller (e.g., assembly, installation) as well as all ancillary costs (e.g., proper packaging, transport costs including any transport and liability insurance).</p>
-          <p>5.3 The agreed price is due for payment within 30 calendar days of complete delivery and performance (including any agreed acceptance) and receipt of a proper invoice. If we make payment within 14 calendar days, the Seller shall grant us a 3% discount on the net amount of the invoice.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>6. Confidentiality and Retention of Title</h2>
-          <p>6.1 We reserve the property rights and copyrights to illustrations, plans, drawings, calculations, execution instructions, product descriptions and other documents. Such documents are to be used exclusively for the contractual performance and are to be returned to us after completion of the contract. The documents must be kept secret from third parties, even after termination of the contract. The obligation of secrecy shall only expire if and to the extent that the knowledge contained in the documents provided has become generally known.</p>
-          <p>6.2 The foregoing provision shall apply mutatis mutandis to substances and materials (e.g., software, finished and semi-finished products) as well as to tools, templates, samples and other items which we provide to the Seller for manufacturing. Such items shall - as long as they are not processed - be stored separately at the Seller's expense and insured to an appropriate extent against destruction and loss.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>7. Defective Delivery</h2>
-          <p>7.1 Our rights in the event of material defects and defects of title of the goods (including wrong and short delivery as well as improper assembly, defective assembly, operating or instruction manual) and in the event of other breaches of duty by the Seller shall be governed by the statutory provisions, unless otherwise provided below.</p>
-          <p>7.2 In accordance with the statutory provisions, the Seller shall be liable in particular for ensuring that the goods have the agreed quality at the time of transfer of risk to us. In any case, those product descriptions which - in particular by designation or reference in our order - are the subject matter of the respective contract shall be deemed to be an agreement on the quality.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>8. Supplier Recourse</h2>
-          <p>8.1 Our legally determined recourse claims within a supply chain (supplier recourse pursuant to §§ 478, 479 BGB) shall be available to us without restriction in addition to the claims for defects. In particular, we are entitled to demand exactly the type of subsequent performance (repair or replacement delivery) from the Seller that we owe to our customer in the individual case. Our statutory right of choice (§ 439 para. 1 BGB) is not restricted by this.</p>
-          <p>8.2 Before we acknowledge or fulfill a claim for defects asserted by our customer (including reimbursement of expenses pursuant to §§ 478 para. 3, 439 para. 2 BGB), we shall notify the Seller and request a written statement, briefly explaining the facts. If the statement is not made within a reasonable period of time and if no amicable solution is reached, the claim for defects actually granted by us shall be deemed to be owed to our customer; in this case, the Seller shall be responsible for providing proof to the contrary.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>9. Producer Liability</h2>
-          <p>9.1 If the Seller is responsible for product damage, he shall indemnify us against claims by third parties to the extent that the cause lies within his sphere of control and organization and he himself is liable in relation to third parties.</p>
-          <p>9.2 Within the scope of his indemnification obligation, the Seller shall reimburse expenses pursuant to §§ 683, 670 BGB which arise from or in connection with a claim by third parties, including recall actions carried out by us. We shall inform the Seller - as far as possible and reasonable - about the content and scope of recall measures and give him the opportunity to comment. Further legal claims remain unaffected.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>10. Limitation Period</h2>
-          <p>10.1 The mutual claims of the contracting parties shall become statute-barred in accordance with the statutory provisions, unless otherwise provided below.</p>
-          <p>10.2 Notwithstanding § 438 para. 1 no. 3 BGB, the general limitation period for claims for defects is 3 years from the transfer of risk. If acceptance has been agreed, the limitation period shall commence upon acceptance. The 3-year limitation period shall also apply mutatis mutandis to claims arising from defects of title.</p>
-        </div>
-        
-        <div className="legal-section">
-          <h2>11. Choice of Law and Jurisdiction</h2>
-          <p>11.1 The law of the Federal Republic of Germany shall apply to these GTC and all legal relationships between us and the Seller to the exclusion of international uniform law, in particular the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
-          <p>11.2 If the Seller is a merchant within the meaning of the German Commercial Code, a legal entity under public law or a special fund under public law, the exclusive - also international - place of jurisdiction for all disputes arising from the contractual relationship shall be our place of business in Todtnau, Germany. However, we are also entitled in all cases to bring an action at the place of performance of the delivery obligation in accordance with these GTC or a prior individual agreement or at the general place of jurisdiction of the Seller.</p>
         </div>
       </div>
     </div>

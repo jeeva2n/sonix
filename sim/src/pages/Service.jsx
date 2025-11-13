@@ -1,4 +1,5 @@
-import './PageStyles.css';
+import React from 'react';
+import './css/Service.css';
 
 function Service() {
   return (
@@ -18,42 +19,42 @@ function Service() {
         
         <div className="service-grid">
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon tech-support-icon"></div>
             <h3>Technical Support</h3>
             <p>Remote diagnostic services and technical assistance from our expert engineering team</p>
             <a href="/technical-support" className="service-link">Learn More</a>
           </div>
           
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon maintenance-icon"></div>
             <h3>Maintenance Services</h3>
             <p>Preventive maintenance programs and on-site service visits</p>
             <a href="/maintenance" className="service-link">Learn More</a>
           </div>
           
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon spare-parts-icon"></div>
             <h3>Spare Parts</h3>
             <p>Original spare parts with rapid worldwide delivery</p>
             <a href="/spare-parts" className="service-link">Learn More</a>
           </div>
           
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon training-icon"></div>
             <h3>Training Programs</h3>
             <p>Comprehensive training for operators and maintenance personnel</p>
             <a href="/training" className="service-link">Learn More</a>
           </div>
           
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon upgrade-icon"></div>
             <h3>Machine Upgrades</h3>
             <p>Retrofit solutions to enhance the capabilities of your existing equipment</p>
             <a href="/upgrades" className="service-link">Learn More</a>
           </div>
           
           <div className="service-card">
-            <div className="service-icon"></div>
+            <div className="service-icon emergency-icon"></div>
             <h3>24/7 Emergency Support</h3>
             <p>Around-the-clock assistance for critical production situations</p>
             <a href="/emergency-support" className="service-link">Learn More</a>

@@ -1,6 +1,9 @@
-import './PageStyles.css';
+import React, { useState } from 'react';
+import './css/Downloads.css';
 
 function Downloads() {
+  const [activeTab, setActiveTab] = useState('product-brochures');
+  
   return (
     <div className="downloads-page">
       <div className="downloads-header">
@@ -12,11 +15,36 @@ function Downloads() {
       
       <div className="downloads-content">
         <div className="download-categories">
-          <div className="category-tab active">Product Brochures</div>
-          <div className="category-tab">Technical Manuals</div>
-          <div className="category-tab">Software Updates</div>
-          <div className="category-tab">Certificates</div>
-          <div className="category-tab">Media Library</div>
+          <div 
+            className={`category-tab ${activeTab === 'product-brochures' ? 'active' : ''}`}
+            onClick={() => setActiveTab('product-brochures')}
+          >
+            Product Brochures
+          </div>
+          <div 
+            className={`category-tab ${activeTab === 'technical-manuals' ? 'active' : ''}`}
+            onClick={() => setActiveTab('technical-manuals')}
+          >
+            Technical Manuals
+          </div>
+          <div 
+            className={`category-tab ${activeTab === 'software-updates' ? 'active' : ''}`}
+            onClick={() => setActiveTab('software-updates')}
+          >
+            Software Updates
+          </div>
+          <div 
+            className={`category-tab ${activeTab === 'certificates' ? 'active' : ''}`}
+            onClick={() => setActiveTab('certificates')}
+          >
+            Certificates
+          </div>
+          <div 
+            className={`category-tab ${activeTab === 'media-library' ? 'active' : ''}`}
+            onClick={() => setActiveTab('media-library')}
+          >
+            Media Library
+          </div>
         </div>
         
         <div className="download-search">
@@ -28,8 +56,8 @@ function Downloads() {
           <div className="download-item">
             <div className="download-icon pdf"></div>
             <div className="download-info">
-              <h3>Home Care Product Catalogue 2023</h3>
-              <p>Complete overview of our Home care machinery portfolio</p>
+              <h3>Personal Care Product Catalogue 2023</h3>
+              <p>Complete overview of our personal care machinery portfolio</p>
               <div className="download-meta">
                 <span className="file-type">PDF</span>
                 <span className="file-size">12.5 MB</span>

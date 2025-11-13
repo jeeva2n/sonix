@@ -1,4 +1,5 @@
-import './PageStyles.css';
+import React from 'react';
+import './css/Legal.css';
 
 function Imprint() {
   return (

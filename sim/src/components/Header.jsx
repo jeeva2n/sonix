@@ -1,28 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaPhone, FaHome } from "react-icons/fa";
 import "./Header.css";
 
 function Header() {
   const [contactOpen, setContactOpen] = useState(false);
-  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleLanguageMenu = () => setLanguageMenuOpen(!languageMenuOpen);
+  const handleHomeClick = () => {
+    navigate("/"); // Navigate to home
+  };
 
   return (
     <header className="header">
       <div className="header-container">
+   
         {/* Logo */}
-      <div className="logo">
-  <Link to="/">
-    <img
-      src="./src/assets/primary/alpha.png"
-      alt="ZAHORANSKY Logo"
-      className="logo-image"
-    />
-  </Link>
-</div>
-
+        <div className="logo">
+          <Link to="/">
+            <img
+              src="./src/assets/primary/daks.png"
+              alt="ZAHORANSKY Logo"
+              className="logo-image"
+            />
+          </Link>
+        </div>
 
         {/* Navigation */}
         <nav className="main-nav">
@@ -38,22 +40,12 @@ function Header() {
 
         {/* Actions */}
         <div className="header-actions">
-          {/* Language Selector */}
-          <div className="language-selector" onClick={toggleLanguageMenu}>
-            <FaGlobe />
-            <span className="dropdown-arrow">▼</span>
-
-            {languageMenuOpen && (
-              <div className="language-dropdown">
-                <div className="language-option">English</div>
-                <div className="language-option">Deutsch</div>
-                <div className="language-option">Español</div>
-                <div className="language-option">Français</div>
-                <div className="language-option">中文</div>
-              </div>
-            )}
+          {/* ✅ Home Button (Replaces Language Selector) */}
+          <div className="home-button" onClick={handleHomeClick}>
+            <FaHome />
           </div>
 
+          {/* Phone Button */}
           <div className="contact-button">
             <FaPhone />
           </div>
@@ -71,7 +63,6 @@ function Header() {
               <div className="contact-panel-dropdown">
                 {/* Left Section - Company Information */}
                 <div className="contact-company-info">
-                  {/* Company 1 */}
                   <div className="company-section">
                     <h3 className="company-title">ZAHOBANSSY AG</h3>
                     <p className="company-subtitle">Intelligent for Group</p>
@@ -90,7 +81,6 @@ function Header() {
 
                   <div className="divider"></div>
 
-                  {/* Company 2 */}
                   <div className="company-section">
                     <h3 className="company-title">ZAHOBANSSY</h3>
                     <p className="company-subtitle">Automatic & Mobile GmbH</p>
@@ -111,7 +101,7 @@ function Header() {
                 {/* Right Section - Get in Touch */}
                 <div className="contact-get-in-touch">
                   <h3 className="get-in-touch-heading">Get in touch with us</h3>
-                  
+
                   {/* Block 1: Customer Service */}
                   <div className="contact-panel-item">
                     <img
@@ -140,7 +130,7 @@ function Header() {
                     <div className="contact-item-info">
                       <h4>Contact & Locations</h4>
                       <p>
-                        Reach out to the assistance, inquiries, or just to buy hello services to help.
+                        Reach out for assistance, inquiries, or just to say hello!
                       </p>
                       <div className="link-group">
                         <Link to="/contact" className="contact-link">
@@ -172,7 +162,7 @@ function Header() {
                   {/* Additional Career Info */}
                   <div className="career-additional">
                     <p className="career-text">
-                      and at all levels of experience. Shape the future of a globally active and innovative technology provider!
+                      Shape the future of a globally active and innovative technology provider!
                     </p>
                     <div className="career-links">
                       <Link to="/company" className="career-link">

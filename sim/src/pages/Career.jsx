@@ -1,4 +1,5 @@
-import './PageStyles.css';
+import React from 'react';
+import './css/Career.css';
 
 function Career() {
   return (
@@ -20,22 +21,22 @@ function Career() {
           <h2>Employee Benefits</h2>
           <div className="benefits-grid">
             <div className="benefit-item">
-              <div className="benefit-icon"></div>
+              <div className="benefit-icon development-icon"></div>
               <h3>Professional Development</h3>
               <p>Continuous learning opportunities and career advancement paths</p>
             </div>
             <div className="benefit-item">
-              <div className="benefit-icon"></div>
+              <div className="benefit-icon balance-icon"></div>
               <h3>Work-Life Balance</h3>
               <p>Flexible working arrangements and generous time-off policies</p>
             </div>
             <div className="benefit-item">
-              <div className="benefit-icon"></div>
+              <div className="benefit-icon global-icon"></div>
               <h3>Global Opportunities</h3>
               <p>Chances to work across our international locations</p>
             </div>
             <div className="benefit-item">
-              <div className="benefit-icon"></div>
+              <div className="benefit-icon compensation-icon"></div>
               <h3>Competitive Compensation</h3>
               <p>Attractive salary packages and performance bonuses</p>
             </div>

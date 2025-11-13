@@ -1,29 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './css/HealthCare.css';
+import './css/PersonalCare.css';
 
-function HealthCare() {
+function PersonalCare() {
   return (
-    <div className="healthcare-page">
+    <div className="personal-care-page">
       <div className="image-gallery">
         <div className="gallery-item main-item">
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
-                <span className="green-text">Health</span>
+                <span className="green-text">Personal</span>
                 <br />
                 <span className="green-text">Care</span>
                 <br />
-                <span className="green-text">Innovations</span>
+                <span className="green-text">Solutions</span>
               </h2>
               <div className="description">
-                <p>Advanced medical and healthcare manufacturing solutions.</p>
-                <p>Precision-engineered equipment for the healthcare industry.</p>
+                <p>From toothbrushes to specialized grooming products, our personal care machines deliver efficiency and quality.</p>
               </div>
               <div className="action-buttons">
-                <Link to="/medical-tools" className="action-btn">Medical Tools</Link>
-                <Link to="/diagnostic-equipment" className="action-btn">Diagnostic Equipment</Link>
-                <Link to="/healthcare-automation" className="action-btn">Healthcare Automation</Link>
+                <Link to="/toothbrushes" className="action-btn">Toothbrushes</Link>
+                <Link to="/hairbrushes" className="action-btn">Hair Brushes</Link>
+                <Link to="/cosmetic-tools" className="action-btn">Cosmetic Tools</Link>
               </div>
             </div>
           </div>
@@ -33,9 +32,9 @@ function HealthCare() {
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
-                <span className="red-text">Medical</span>
+                <span className="red-text">Automated</span>
                 <br />
-                <span className="red-text">precision</span>
+                <span className="red-text">production</span>
               </h2>
             </div>
           </div>
@@ -45,9 +44,9 @@ function HealthCare() {
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
-                <span className="purple-text">Sterile</span>
+                <span className="purple-text">Specialized</span>
                 <br />
-                <span className="purple-text">manufacturing</span>
+                <span className="purple-text">tools</span>
               </h2>
             </div>
           </div>
@@ -57,9 +56,9 @@ function HealthCare() {
           <div className="overlay">
             <div className="text-content">
               <h2 className="headline">
-                <span className="blue-text">Patient</span>
+                <span className="blue-text">Quality</span>
                 <br />
-                <span className="blue-text">care</span>
+                <span className="blue-text">products</span>
               </h2>
             </div>
           </div>
@@ -69,4 +68,4 @@ function HealthCare() {
   );
 }
 
-export default HealthCare;
+export default PersonalCare;
