@@ -60,13 +60,15 @@
 
 .card-image-wrapper {
   position: absolute;
-  inset: 0;
+  inset: 0;              
 }
 
 .card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
 }
 
 .card-overlay {
@@ -162,98 +164,100 @@
 }
 
 /* ------------------------------------------------------ */
-/* RESPONSIVE — LAPTOPS                                   */
+/* SMOOTH ZOOM BLUR ANIMATION                             */
 /* ------------------------------------------------------ */
 
-@media (max-width: 1280px) {
-  .cards-wrapper {
-    height: 72vh;
-  }
-  .card-title {
-    font-size: 2.6rem;
-  }
-  .card-subtitle,
-  .card-subtitle2 {
-    font-size: 1.5rem;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* RESPONSIVE — TABLETS                                    */
-/* ------------------------------------------------------ */
-
-@media (max-width: 1024px) {
-  .cards-wrapper {
-    height: 68vh;
-  }
-  .card-title {
-    font-size: 2.3rem;
-  }
-  .card-subtitle,
-  .card-subtitle2 {
-    font-size: 1.4rem;
-  }
-  .card-content {
-    padding: 1.8rem;
-  }
-}
-
-/* ------------------------------------------------------ */
-/* RESPONSIVE — MOBILE                                     */
-/* ------------------------------------------------------ */
-
-@media (max-width: 768px) {
-  .home-wrapper {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-
-  .cards-wrapper {
-    flex-direction: column;
-    height: calc(100vh - 80px);
-    gap: 0.7rem;
-  }
-
-  .card {
-    flex: 1;
-    min-height: 0;
-    width: 100%;
-  }
-
-  /* Expand/collapse disabled */
-  .card.expanded,
-  .card.collapsed {
-    flex: 1;
-  }
-
-  /* Always visible details */
-  .card-details {
+/* Animation keyframes */
+@keyframes smoothZoomBlur {
+  0% {
+    transform: scale(1);
+    filter: blur(0px);
     opacity: 1;
-    max-height: 200px;
-    animation: none;
-    margin-top: 1rem;
   }
+  20% {
+    transform: scale(1.05);
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  40% {
+    transform: scale(1.08);
+    filter: blur(2px);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.05);
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  80% {
+    transform: scale(1.02);
+    filter: blur(0.5px);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 
-  .card-content {
-    padding: 1.5rem;
-  }
+/* Apply animation to images when they change */
+/* ------------------------------------------------------ */
+/* SMOOTH ZOOM BLUR ANIMATION                             */
+/* ------------------------------------------------------ */
 
-  .card-title {
-    font-size: 1.9rem;
+/* Animation keyframes - Professional smooth transition */
+@keyframes smoothZoomBlur {
+  0% {
+    transform: scale(1);
+    filter: blur(0px) brightness(1);
+    opacity: 1;
   }
+  25% {
+    transform: scale(1.03);
+    filter: blur(3px) brightness(0.95);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    filter: blur(8px) brightness(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: scale(1.03);
+    filter: blur(3px) brightness(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px) brightness(1);
+    opacity: 1;
+  }
+}
 
-  .card-subtitle,
-  .card-subtitle2 {
-    font-size: 1.2rem;
-  }
+/* Apply animation to images when they change */
+.card-image.changing {
+  animation: smoothZoomBlur 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
-  .card-description {
-    font-size: 0.9rem;
-   display: -webkit-box;
-/* -webkit-line-clamp: 3; */
--webkit-box-orient: vertical;
-overflow: hidden;
-    overflow: hidden;
-  }
+/* Professional stagger animations for each card */
+.card:nth-child(1) .card-image.changing { animation-delay: 0s; }
+.card:nth-child(2) .card-image.changing { animation-delay: 0.5s; }
+.card:nth-child(3) .card-image.changing { animation-delay: 1s; }
+.card:nth-child(4) .card-image.changing { animation-delay: 1.5s; }
+
+/* Smooth base transition for all image states */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
+}
+
+/* Hover effect - subtle */
+.card:hover .card-image {
+  transform: scale(1.02);
+  transition: transform 0.8s ease;
 }

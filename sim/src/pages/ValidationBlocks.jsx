@@ -1,9 +1,10 @@
+// ValidationBlocks.js
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleProductModal from "./SimpleProductModal";
-import "./css/FlawedSpecimens.css";
+import "./css/ValidationBlocks.css";
 
-function FlawedSpecimens({ category: initialCategory }) {
+function ValidationBlocks({ category: initialCategory }) {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || "All");
   const [loading, setLoading] = useState(true);
@@ -13,49 +14,17 @@ function FlawedSpecimens({ category: initialCategory }) {
 
   const categories = [
     "All",
-    "Training and Examination Flawed specimens",
-    "Ultrasonic Testing Flawed specimens",
-    "Dye Penetrant Flawed specimens",
-    "Eddy Current Flawed specimens",
-    "Radiography Flawed specimens",
-    "Visual testing Flawed specimens",
-    "Paut and ToFD Flawed specimens",
-    "NDT Flawed Specimens Kit",
-    "UT Flawed Specimens Kit",
-    "NDT Standards Flawed Specimens Kit",
-    "MT Flawed Specimens Kit",
-    "PT Flawed Specimens Kit",
-    "RT Flawed Specimens Kit",
-    "ET Flawed Specimens Kit",
-    "PAUT and ToFD Flawed Specimens Kit",
-    "Welded Specimens",
-    "Base Material Flawed Specimens",
-    "Advanced NDT Validation Specimens",
-    "POD & Training Specimens"
+    "UT Validation Blocks",
+    "PAUT and ToFD Validation Blocks",
+    "Boiler Tube PAUT Validation Blocks"
   ];
 
   // Category to URL mapping
   const categoryUrlMap = {
-    "All": "/flawed-specimens",
-    "Training and Examination Flawed specimens": "/flawed-specimens/training-examination",
-    "Ultrasonic Testing Flawed specimens": "/flawed-specimens/ultrasonic",
-    "Dye Penetrant Flawed specimens": "/flawed-specimens/dye-penetrant",
-    "Eddy Current Flawed specimens": "/flawed-specimens/eddy-current",
-    "Radiography Flawed specimens": "/flawed-specimens/radiography",
-    "Visual testing Flawed specimens": "/flawed-specimens/visual-testing",
-    "Paut and ToFD Flawed specimens": "/flawed-specimens/paut-tofd",
-    "NDT Flawed Specimens Kit": "/flawed-specimens/ndt-kit",
-    "UT Flawed Specimens Kit": "/flawed-specimens/ut-kit",
-    "NDT Standards Flawed Specimens Kit": "/flawed-specimens/standards-kit",
-    "MT Flawed Specimens Kit": "/flawed-specimens/mt-kit",
-    "PT Flawed Specimens Kit": "/flawed-specimens/pt-kit",
-    "RT Flawed Specimens Kit": "/flawed-specimens/rt-kit",
-    "ET Flawed Specimens Kit": "/flawed-specimens/et-kit",
-    "PAUT and ToFD Flawed Specimens Kit": "/flawed-specimens/paut-tofd-kit",
-    "Welded Specimens": "/flawed-specimens/welded",
-    "Base Material Flawed Specimens": "/flawed-specimens/base-material",
-    "Advanced NDT Validation Specimens": "/flawed-specimens/advanced",
-    "POD & Training Specimens": "/flawed-specimens/pod-training"
+    "All": "/validation-blocks",
+    "UT Validation Blocks": "/validation-blocks/ut",
+    "PAUT and ToFD Validation Blocks": "/validation-blocks/paut-tofd",
+    "Boiler Tube PAUT Validation Blocks": "/validation-blocks/boiler-tube"
   };
 
   // Update selected category when prop changes
@@ -87,20 +56,19 @@ function FlawedSpecimens({ category: initialCategory }) {
 
   const fetchProducts = async () => {
     try {
-      // FIX: Changed 'type=flawed_specimenS' to 'type=flawed_specimen' and added logging.
-      const response = await fetch("http://localhost:5000/api/products?type=flawed_specimen");
-      console.log("Fetching flawed specimens from:", response.url);
+      const response = await fetch("http://localhost:5000/api/products?type=validation_block");
+      console.log("Fetching validation blocks from:", response.url);
       
       const data = await response.json();
-      console.log("Flawed specimens response:", data);
+      console.log("Validation blocks response:", data);
 
       if (data.success) {
         setProducts(data.products || []);
-        console.log("Loaded flawed specimens:", data.products.length);
+        console.log("Loaded validation blocks:", data.products.length);
       }
       setLoading(false);
     } catch (err) {
-      console.error("Error fetching flawed specimens:", err);
+      console.error("Error fetching validation blocks:", err);
       setLoading(false);
     }
   };
@@ -128,7 +96,7 @@ function FlawedSpecimens({ category: initialCategory }) {
   const clearFilters = () => {
     setSearchTerm("");
     setSelectedCategory("All");
-    navigate("/flawed-specimens");
+    navigate("/validation-blocks");
   };
 
   // Get page title based on category
@@ -136,19 +104,20 @@ function FlawedSpecimens({ category: initialCategory }) {
     if (selectedCategory && selectedCategory !== "All") {
       return selectedCategory;
     }
-    return "Flawed Specimens";
+    return "NDT Validation Blocks";
   };
 
   return (
-    <div className="flawed-specimens-container">
+    <div className="validation-blocks-container">
       <div className="page-container-wrapper">
         
         <div className="page-header">
           <div className="header-content">
-            <span className="header-badge">NDT TRAINING & VALIDATION</span>
+            <span className="header-badge">EQUIPMENT VALIDATION</span>
             <h1>{getPageTitle()}</h1>
             <p>
-              Browse our complete range of flawed specimens for NDT validation and training
+              Precision-engineered validation blocks for equipment calibration, 
+              accuracy verification, and NDT method validation
             </p>
             <div className="header-stats">
               <div className="stat-item">
@@ -170,8 +139,8 @@ function FlawedSpecimens({ category: initialCategory }) {
         {/* Breadcrumb Navigation */}
         {selectedCategory !== "All" && (
           <div className="breadcrumb">
-            <span onClick={() => navigate("/flawed-specimens")} className="breadcrumb-link">
-              Flawed Specimens
+            <span onClick={() => navigate("/validation-blocks")} className="breadcrumb-link">
+              Validation Blocks
             </span>
             <span className="breadcrumb-separator">›</span>
             <span className="breadcrumb-current">{selectedCategory}</span>
@@ -180,14 +149,14 @@ function FlawedSpecimens({ category: initialCategory }) {
 
         <div className="filters-section">
           <div className="filters-header">
-            <h2>Browse Flawed Specimens</h2>
-            <p>Find the perfect flawed specimen for your NDT training and validation needs</p>
+            <h2>Browse Validation Blocks</h2>
+            <p>Find the perfect validation block for your NDT equipment</p>
           </div>
 
           <div className="search-bar">
             <input
               type="text"
-              placeholder="Search flawed specimens..."
+              placeholder="Search validation blocks..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
@@ -234,7 +203,44 @@ function FlawedSpecimens({ category: initialCategory }) {
             </div>
           )}
         </div>
-        // Add in each component (ValidationBlocks, ReferenceStandards, FlawedSpecimens)
+
+        {/* Category Info Section */}
+        {selectedCategory === "All" && (
+          <div className="category-info-section">
+            <div className="category-grid">
+              <div className="category-info-card" onClick={() => handleCategoryChange("UT Validation Blocks")}>
+                <div className="category-icon">🔬</div>
+                <h3>UT Validation Blocks</h3>
+                <p>Standard calibration blocks for ultrasonic thickness gauges and flaw detectors</p>
+                <div className="category-tags">
+                  <span>Accuracy Testing</span>
+                  <span>Velocity Calibration</span>
+                </div>
+              </div>
+              
+              <div className="category-info-card" onClick={() => handleCategoryChange("PAUT and ToFD Validation Blocks")}>
+                <div className="category-icon">📐</div>
+                <h3>PAUT & ToFD Validation Blocks</h3>
+                <p>Complex geometry blocks for phased array and time-of-flight diffraction</p>
+                <div className="category-tags">
+                  <span>Array Calibration</span>
+                  <span>Beam Steering</span>
+                </div>
+              </div>
+              
+              <div className="category-info-card" onClick={() => handleCategoryChange("Boiler Tube PAUT Validation Blocks")}>
+                <div className="category-icon">⚙️</div>
+                <h3>Boiler Tube PAUT Blocks</h3>
+                <p>Specialized blocks for tube inspection in boilers and heat exchangers</p>
+                <div className="category-tags">
+                  <span>Tube Inspection</span>
+                  <span>Corrosion Mapping</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+// Add in each component (ValidationBlocks, ReferenceStandards, FlawedSpecimens)
 // After the filters section, before the loading check
 
 <div style={{ margin: "20px 0", padding: "10px", background: "#f5f5f5", borderRadius: "5px" }}>
@@ -275,11 +281,10 @@ function FlawedSpecimens({ category: initialCategory }) {
     Log Products
   </button>
 </div>
-
         {loading ? (
           <div className="loading">
             <div className="loading-spinner"></div>
-            <span>Loading flawed specimens...</span>
+            <span>Loading validation blocks...</span>
           </div>
         ) : (
           <div className="products-container">
@@ -310,6 +315,9 @@ function FlawedSpecimens({ category: initialCategory }) {
                           e.target.src = "/images/placeholder.jpg";
                         }}
                       />
+                      <div className="product-badge">
+                        {product.category}
+                      </div>
                       <div className="image-overlay">
                         <span className="overlay-icon">🔍</span>
                         <span>Quick View</span>
@@ -317,28 +325,29 @@ function FlawedSpecimens({ category: initialCategory }) {
                     </div>
 
                     <div className="product-info">
-                      <div className="product-badges">
-                        <span className="product-category-badge">
-                          {product.category}
-                        </span>
-                        {product.subcategory && (
-                          <span className="product-subcategory-badge">
-                            {product.subcategory}
-                          </span>
-                        )}
-                      </div>
-
                       <h3>{product.name}</h3>
                       <p className="product-description">
                         {product.description}
                       </p>
-
-                      <div className="product-meta">
+                      
+                      <div className="product-specs">
                         {product.material && (
-                          <span className="meta-item">📦 {product.material}</span>
+                          <div className="spec-item">
+                            <span className="spec-label">Material:</span>
+                            <span className="spec-value">{product.material}</span>
+                          </div>
                         )}
                         {product.dimensions && (
-                          <span className="meta-item">📐 {product.dimensions}</span>
+                          <div className="spec-item">
+                            <span className="spec-label">Dimensions:</span>
+                            <span className="spec-value">{product.dimensions}</span>
+                          </div>
+                        )}
+                        {product.standards && (
+                          <div className="spec-item">
+                            <span className="spec-label">Standards:</span>
+                            <span className="spec-value">{product.standards}</span>
+                          </div>
                         )}
                       </div>
 
@@ -346,7 +355,7 @@ function FlawedSpecimens({ category: initialCategory }) {
                         className="view-details-btn"
                         onClick={() => setSelectedProductId(product.id)}
                       >
-                        <span>View Details</span>
+                        <span>View Specifications</span>
                         <span className="btn-arrow">→</span>
                       </button>
                     </div>
@@ -355,11 +364,11 @@ function FlawedSpecimens({ category: initialCategory }) {
               </div>
             ) : (
               <div className="no-products">
-                <div className="no-products-icon">🔍</div>
-                <h3>No {selectedCategory !== "All" ? selectedCategory : "Flawed Specimens"} Found</h3>
+                <div className="no-products-icon">⚙️</div>
+                <h3>No {selectedCategory !== "All" ? selectedCategory : "Validation Blocks"} Found</h3>
                 <p>
                   {products.length === 0
-                    ? "No flawed specimens available. Add some from the admin dashboard."
+                    ? "No validation blocks available. Add some from the admin dashboard."
                     : "No products match your current search criteria."}
                 </p>
                 {products.length > 0 && (
@@ -377,11 +386,10 @@ function FlawedSpecimens({ category: initialCategory }) {
             product={products.find((p) => p.id === selectedProductId)}
             onClose={() => setSelectedProductId(null)}
           />
-          
         )}
       </div>
     </div>
   );
 }
 
-export default FlawedSpecimens;
+export default ValidationBlocks;

@@ -1,9 +1,10 @@
+// ReferenceStandards.js
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleProductModal from "./SimpleProductModal";
-import "./css/FlawedSpecimens.css";
+import "./css/ReferenceStandards.css";
 
-function FlawedSpecimens({ category: initialCategory }) {
+function ReferenceStandards({ category: initialCategory }) {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || "All");
   const [loading, setLoading] = useState(true);
@@ -11,51 +12,30 @@ function FlawedSpecimens({ category: initialCategory }) {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  // Categories list
   const categories = [
     "All",
-    "Training and Examination Flawed specimens",
-    "Ultrasonic Testing Flawed specimens",
-    "Dye Penetrant Flawed specimens",
-    "Eddy Current Flawed specimens",
-    "Radiography Flawed specimens",
-    "Visual testing Flawed specimens",
-    "Paut and ToFD Flawed specimens",
-    "NDT Flawed Specimens Kit",
-    "UT Flawed Specimens Kit",
-    "NDT Standards Flawed Specimens Kit",
-    "MT Flawed Specimens Kit",
-    "PT Flawed Specimens Kit",
-    "RT Flawed Specimens Kit",
-    "ET Flawed Specimens Kit",
-    "PAUT and ToFD Flawed Specimens Kit",
-    "Welded Specimens",
-    "Base Material Flawed Specimens",
-    "Advanced NDT Validation Specimens",
-    "POD & Training Specimens"
+    "UT Calibration Blocks",
+    "PAUT Calibration Blocks",
+    "TOFD Calibration Blocks",
+    "MT/PT Calibration Blocks",
+    "ET Calibration Blocks",
+    "ECT/RFT/MFL Calibration Tubes",
+    "APR Reference Tubes",
+    "AUT-Z Reference Blocks"
   ];
 
   // Category to URL mapping
   const categoryUrlMap = {
-    "All": "/flawed-specimens",
-    "Training and Examination Flawed specimens": "/flawed-specimens/training-examination",
-    "Ultrasonic Testing Flawed specimens": "/flawed-specimens/ultrasonic",
-    "Dye Penetrant Flawed specimens": "/flawed-specimens/dye-penetrant",
-    "Eddy Current Flawed specimens": "/flawed-specimens/eddy-current",
-    "Radiography Flawed specimens": "/flawed-specimens/radiography",
-    "Visual testing Flawed specimens": "/flawed-specimens/visual-testing",
-    "Paut and ToFD Flawed specimens": "/flawed-specimens/paut-tofd",
-    "NDT Flawed Specimens Kit": "/flawed-specimens/ndt-kit",
-    "UT Flawed Specimens Kit": "/flawed-specimens/ut-kit",
-    "NDT Standards Flawed Specimens Kit": "/flawed-specimens/standards-kit",
-    "MT Flawed Specimens Kit": "/flawed-specimens/mt-kit",
-    "PT Flawed Specimens Kit": "/flawed-specimens/pt-kit",
-    "RT Flawed Specimens Kit": "/flawed-specimens/rt-kit",
-    "ET Flawed Specimens Kit": "/flawed-specimens/et-kit",
-    "PAUT and ToFD Flawed Specimens Kit": "/flawed-specimens/paut-tofd-kit",
-    "Welded Specimens": "/flawed-specimens/welded",
-    "Base Material Flawed Specimens": "/flawed-specimens/base-material",
-    "Advanced NDT Validation Specimens": "/flawed-specimens/advanced",
-    "POD & Training Specimens": "/flawed-specimens/pod-training"
+    "All": "/reference-standards",
+    "UT Calibration Blocks": "/calibration-blocks/ut",
+    "PAUT Calibration Blocks": "/calibration-blocks/paut",
+    "TOFD Calibration Blocks": "/calibration-blocks/tofd",
+    "MT/PT Calibration Blocks": "/calibration-blocks/mt-pt",
+    "ET Calibration Blocks": "/calibration-blocks/et",
+    "ECT/RFT/MFL Calibration Tubes": "/calibration-blocks/ect-rft-mfl",
+    "APR Reference Tubes": "/calibration-blocks/apr",
+    "AUT-Z Reference Blocks": "/calibration-blocks/aut-z"
   };
 
   // Update selected category when prop changes
@@ -71,36 +51,36 @@ function FlawedSpecimens({ category: initialCategory }) {
 
   useEffect(() => {
     const reveal = () => {
-      const elements = document.querySelectorAll('.product-card');
+      const elements = document.querySelectorAll(".product-card");
       elements.forEach((el) => {
         const top = el.getBoundingClientRect().top;
         if (top < window.innerHeight - 100) {
-          el.classList.add('active');
+          el.classList.add("active");
         }
       });
     };
-    
-    window.addEventListener('scroll', reveal);
+
+    window.addEventListener("scroll", reveal);
     reveal();
-    return () => window.removeEventListener('scroll', reveal);
+    return () => window.removeEventListener("scroll", reveal);
   }, [products]);
 
   const fetchProducts = async () => {
     try {
-      // FIX: Changed 'type=flawed_specimenS' to 'type=flawed_specimen' and added logging.
-      const response = await fetch("http://localhost:5000/api/products?type=flawed_specimen");
-      console.log("Fetching flawed specimens from:", response.url);
+      // Make sure type=calibration_block matches admin dashboard
+      const response = await fetch("http://localhost:5000/api/products?type=calibration_block");
+      console.log("Fetching reference standards from:", response.url);
       
       const data = await response.json();
-      console.log("Flawed specimens response:", data);
+      console.log("Reference standards response:", data);
 
       if (data.success) {
         setProducts(data.products || []);
-        console.log("Loaded flawed specimens:", data.products.length);
+        console.log("Loaded reference standards:", data.products.length);
       }
       setLoading(false);
     } catch (err) {
-      console.error("Error fetching flawed specimens:", err);
+      console.error("Error fetching reference standards:", err);
       setLoading(false);
     }
   };
@@ -128,7 +108,7 @@ function FlawedSpecimens({ category: initialCategory }) {
   const clearFilters = () => {
     setSearchTerm("");
     setSelectedCategory("All");
-    navigate("/flawed-specimens");
+    navigate("/reference-standards");
   };
 
   // Get page title based on category
@@ -136,20 +116,34 @@ function FlawedSpecimens({ category: initialCategory }) {
     if (selectedCategory && selectedCategory !== "All") {
       return selectedCategory;
     }
-    return "Flawed Specimens";
+    return "Reference Standards";
+  };
+
+  // Get page description based on category
+  const getPageDescription = () => {
+    const descriptions = {
+      "All": "Industry-certified reference standards for accurate NDT calibration and validation",
+      "UT Calibration Blocks": "Precision ultrasonic testing calibration blocks for thickness and flaw detection",
+      "PAUT Calibration Blocks": "Phased Array Ultrasonic Testing calibration blocks for advanced inspections",
+      "TOFD Calibration Blocks": "Time-of-Flight Diffraction calibration blocks for weld inspection",
+      "MT/PT Calibration Blocks": "Magnetic Particle and Penetrant Testing reference standards",
+      "ET Calibration Blocks": "Eddy Current Testing calibration standards for surface inspections",
+      "ECT/RFT/MFL Calibration Tubes": "Tube inspection calibration standards for heat exchangers",
+      "APR Reference Tubes": "Acoustic Pulse Reflectometry reference tubes for pipeline inspection",
+      "AUT-Z Reference Blocks": "Automated Ultrasonic Testing reference blocks for pipeline girth welds"
+    };
+    return descriptions[selectedCategory] || descriptions["All"];
   };
 
   return (
-    <div className="flawed-specimens-container">
+    <div className="reference-standards-container">
       <div className="page-container-wrapper">
-        
+        {/* Page Header */}
         <div className="page-header">
           <div className="header-content">
-            <span className="header-badge">NDT TRAINING & VALIDATION</span>
+            <span className="header-badge">NDT EXCELLENCE</span>
             <h1>{getPageTitle()}</h1>
-            <p>
-              Browse our complete range of flawed specimens for NDT validation and training
-            </p>
+            <p>{getPageDescription()}</p>
             <div className="header-stats">
               <div className="stat-item">
                 <span className="stat-number">{filteredProducts.length}</span>
@@ -170,24 +164,25 @@ function FlawedSpecimens({ category: initialCategory }) {
         {/* Breadcrumb Navigation */}
         {selectedCategory !== "All" && (
           <div className="breadcrumb">
-            <span onClick={() => navigate("/flawed-specimens")} className="breadcrumb-link">
-              Flawed Specimens
+            <span onClick={() => navigate("/reference-standards")} className="breadcrumb-link">
+              Reference Standards
             </span>
             <span className="breadcrumb-separator">›</span>
             <span className="breadcrumb-current">{selectedCategory}</span>
           </div>
         )}
 
+        {/* Filters Section */}
         <div className="filters-section">
           <div className="filters-header">
-            <h2>Browse Flawed Specimens</h2>
-            <p>Find the perfect flawed specimen for your NDT training and validation needs</p>
+            <h2>Browse Standards</h2>
+            <p>Find the perfect reference standard for your NDT requirements</p>
           </div>
 
           <div className="search-bar">
             <input
               type="text"
-              placeholder="Search flawed specimens..."
+              placeholder="Search reference standards..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
@@ -234,7 +229,7 @@ function FlawedSpecimens({ category: initialCategory }) {
             </div>
           )}
         </div>
-        // Add in each component (ValidationBlocks, ReferenceStandards, FlawedSpecimens)
+// Add in each component (ValidationBlocks, ReferenceStandards, FlawedSpecimens)
 // After the filters section, before the loading check
 
 <div style={{ margin: "20px 0", padding: "10px", background: "#f5f5f5", borderRadius: "5px" }}>
@@ -275,11 +270,11 @@ function FlawedSpecimens({ category: initialCategory }) {
     Log Products
   </button>
 </div>
-
+        {/* Products Section */}
         {loading ? (
           <div className="loading">
             <div className="loading-spinner"></div>
-            <span>Loading flawed specimens...</span>
+            <span>Loading reference standards...</span>
           </div>
         ) : (
           <div className="products-container">
@@ -293,12 +288,12 @@ function FlawedSpecimens({ category: initialCategory }) {
             {filteredProducts.length > 0 ? (
               <div className="products-grid">
                 {filteredProducts.map((product, index) => (
-                  <div 
-                    key={product.id} 
+                  <div
+                    key={product.id}
                     className="product-card hardware-accelerated"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div 
+                    <div
                       className="product-image"
                       onClick={() => setSelectedProductId(product.id)}
                     >
@@ -340,6 +335,9 @@ function FlawedSpecimens({ category: initialCategory }) {
                         {product.dimensions && (
                           <span className="meta-item">📐 {product.dimensions}</span>
                         )}
+                        {product.standards && (
+                          <span className="meta-item">📋 {product.standards}</span>
+                        )}
                       </div>
 
                       <button
@@ -356,10 +354,10 @@ function FlawedSpecimens({ category: initialCategory }) {
             ) : (
               <div className="no-products">
                 <div className="no-products-icon">🔍</div>
-                <h3>No {selectedCategory !== "All" ? selectedCategory : "Flawed Specimens"} Found</h3>
+                <h3>No {selectedCategory !== "All" ? selectedCategory : "Reference Standards"} Found</h3>
                 <p>
                   {products.length === 0
-                    ? "No flawed specimens available. Add some from the admin dashboard."
+                    ? "No products available. Add some from the admin dashboard."
                     : "No products match your current search criteria."}
                 </p>
                 {products.length > 0 && (
@@ -377,11 +375,10 @@ function FlawedSpecimens({ category: initialCategory }) {
             product={products.find((p) => p.id === selectedProductId)}
             onClose={() => setSelectedProductId(null)}
           />
-          
         )}
       </div>
     </div>
   );
 }
 
-export default FlawedSpecimens;
+export default ReferenceStandards;
